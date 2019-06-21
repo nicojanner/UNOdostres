@@ -3,11 +3,7 @@ package ch.bzz.it.unodostres.view;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 
-import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -23,7 +19,7 @@ public class StartView extends JFrame {
 	public StartView() {
 		setTitle("UNOdostres");
 		getContentPane().setLayout(new BorderLayout());
-		//getContentPane().add(startButton);
+		getContentPane().add(startButton);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		getContentPane().add(label);
 		setVisible(true);
