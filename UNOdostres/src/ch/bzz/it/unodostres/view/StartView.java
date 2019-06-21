@@ -18,7 +18,7 @@ public class StartView extends JFrame {
 
 	JButton startButton = new JButton("Start");
 	JPanel buttonPanel = new JPanel();
-	JLabel imageLabel = new JLabel(new ImageIcon("resources/startScreen.jpg"));
+	JLabel imageLabel = new JLabel(new ImageIcon(StartView.class.getResource("/startScreen.jpg")));
 	
 
 	public StartView() {
