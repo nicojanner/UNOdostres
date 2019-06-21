@@ -17,10 +17,10 @@ public class ConfigurePic {
 			System.out.println(url);
 			BufferedImage bigImg = ImageIO.read(url);
 
-			final int width = 32;
-			final int height = 46;
-			final int cols = 5;
-			final int rows = 10;
+			final int width = 79;
+			final int height = 123;
+			final int cols = 10;
+			final int rows = 6;
 			
 			BufferedImage[] sprites = new BufferedImage[rows * cols];
 
@@ -35,7 +35,7 @@ public class ConfigurePic {
 				@Override
 	            protected void paintComponent(Graphics g) {
 	                super.paintComponent(g);
-	                g.drawImage(sprites[32], 0, 0, null);
+	                g.drawImage(sprites[53], 0, 0, null);
 	            }
 			};
 			f.add(p);
