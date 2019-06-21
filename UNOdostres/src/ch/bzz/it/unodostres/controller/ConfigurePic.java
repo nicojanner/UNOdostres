@@ -11,6 +11,8 @@ import javax.swing.JPanel;
 public class ConfigurePic {
 		
 		public static void main(String[] args) throws IOException {
+			
+		 {
 			URL url = ConfigurePic.class.getResource("/Cards.jpg");
 			System.out.println(url);
 			BufferedImage bigImg = ImageIO.read(url);
@@ -40,5 +42,5 @@ public class ConfigurePic {
 			f.pack();
 			f.setVisible(true);
 			
-		}
+		}}
 }
