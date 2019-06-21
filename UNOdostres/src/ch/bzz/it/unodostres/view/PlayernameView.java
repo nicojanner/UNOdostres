@@ -12,6 +12,6 @@ public class PlayernameView extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
 		setResizable(false);
-		setSize(1612, 879);
+		setSize(1612, 879); 
 	}
 }

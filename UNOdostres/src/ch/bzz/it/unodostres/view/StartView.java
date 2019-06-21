@@ -40,7 +40,7 @@ public class StartView extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				System.out.println(getContentPane().getSize());
-				new PlayernameView();
+				new PlayernameView(); 
 				
 			}
 		});
