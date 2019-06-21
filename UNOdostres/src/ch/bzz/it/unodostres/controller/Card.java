@@ -3,14 +3,14 @@ package ch.bzz.it.unodostres.controller;
 public class Card {
 
 	private Card card;
-	private int punkte;
+	private int points;
 
-	public int getPunkte() {
-		return punkte;
+	public int getPoints() {
+		return points;
 	}
 
-	public void setPunkte(int punkte) {
-		this.punkte = punkte;
+	public void setPoints(int points) {
+		this.points = points;
 	}
 
 	public Card getCard() {
