@@ -13,7 +13,7 @@ public class StartView extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 
-	JButton startButton = new JButton("Start");
+	JButton startButton = new JButton("Start"); 
 	JLabel label = new JLabel(new ImageIcon("resources/startScreen.jpg"));
 
 	public StartView() {
