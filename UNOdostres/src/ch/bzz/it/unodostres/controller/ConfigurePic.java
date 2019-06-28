@@ -35,7 +35,7 @@ public class ConfigurePic {
 				@Override
 	            protected void paintComponent(Graphics g) {
 	                super.paintComponent(g);
-	                g.drawImage(sprites[53], 0, 0, null);
+	                g.drawImage(sprites[9], 0, 0, null);
 	            }
 			};
 			f.add(p);
