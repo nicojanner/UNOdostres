@@ -30,7 +30,8 @@ public class Player {
 		this.points = points;
 	}
 
-	public Player(int points) {
-		
+	public Player(int points, String name) {
+		setName(this.name);
+		setPoints(this.points);
 	}
 }
