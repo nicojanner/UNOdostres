@@ -13,25 +13,25 @@ import javax.swing.JPanel;
 import ch.bzz.it.unodostres.controller.Player;
 
 public class MainView extends JFrame {
-	
+
 	private static final long serialVersionUID = 1L;
-	
+
 	JLabel pointsPlayer1 = new JLabel();
 	JLabel pointsPlayer2 = new JLabel();
 	JLabel pointsPlayer3 = new JLabel();
 	JLabel pointsPlayer4 = new JLabel();
-	
+
 	JLabel playerName1 = new JLabel();
 	JLabel playerName2 = new JLabel();
 	JLabel playerName3 = new JLabel();
 	JLabel playerName4 = new JLabel();
-	
+
 	JPanel pointsPanel = new JPanel();
 	JPanel mainPanel = new JPanel();
 	JPanel gamePanel = new JPanel();
-	
+
 	JLabel tableLabel = new JLabel();
-	
+
 	public MainView(Player player1, Player player2, Player player3, Player player4) {
 		setTitle("UNOdostres");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -46,7 +46,7 @@ public class MainView extends JFrame {
 		tableLabel.setPreferredSize(new Dimension(800, 600));
 		tableLabel.setBackground(Color.WHITE);
 		tableLabel.setBorder(BorderFactory.createLineBorder(Color.black));
-		gamePanel.setLayout(new BorderLayout(30,30));
+		gamePanel.setLayout(new BorderLayout(30, 30));
 		playerName1.setHorizontalAlignment(JLabel.CENTER);
 		playerName3.setHorizontalAlignment(JLabel.CENTER);
 		playerName1.setText(player1.getName());
@@ -64,10 +64,8 @@ public class MainView extends JFrame {
 		gamePanel.add(tableLabel, BorderLayout.CENTER);
 		mainPanel.add(gamePanel);
 		getContentPane().add(mainPanel, BorderLayout.CENTER);
-		
+
 		setVisible(true);
 	}
-	
-	
 
 }

@@ -19,7 +19,6 @@ public class StartView extends JFrame {
 	JButton startButton = new JButton("Start");
 	JPanel buttonPanel = new JPanel();
 	JLabel imageLabel = new JLabel(new ImageIcon(StartView.class.getResource("/startScreen.jpg")));
-	
 
 	public StartView() {
 		setTitle("UNOdostres");
@@ -34,21 +33,21 @@ public class StartView extends JFrame {
 		setVisible(true);
 		setResizable(false);
 		pack();
-		
+
 		startButton.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				new PlayernameView(); 
-				
+				new PlayernameView();
+
 			}
 		});
-		
+
 	}
-	
+
 	public static void main(String[] args) {
-		 new StartView();
+		new StartView();
 	}
 
 }

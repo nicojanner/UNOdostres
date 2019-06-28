@@ -15,7 +15,7 @@ import javax.swing.JTextField;
 import ch.bzz.it.unodostres.controller.Player;
 
 public class PlayernameView extends JFrame {
-	
+
 	JLabel title = new JLabel("Choose your name");
 	JLabel playername1Label = new JLabel("Player 1:");
 	JLabel playername2Label = new JLabel("Player 2:");
@@ -26,16 +26,16 @@ public class PlayernameView extends JFrame {
 	JTextField playername2Tf = new JTextField("");
 	JTextField playername3Tf = new JTextField("");
 	JTextField playername4Tf = new JTextField("");
-	
+
 	JButton playButton = new JButton("Play");
-	
+
 	JPanel inputPanel = new JPanel();
-	
+
 	Player player1 = new Player(0, "");
 	Player player2 = new Player(0, "");;
 	Player player3 = new Player(0, "");;
 	Player player4 = new Player(0, "");;
-	
+
 	public PlayernameView() {
 		setTitle("UNOdostres");
 		getContentPane().setLayout(new BoxLayout(getContentPane(), BoxLayout.Y_AXIS));
@@ -53,12 +53,12 @@ public class PlayernameView extends JFrame {
 		inputPanel.add(playername4Tf);
 		playButton.setFont(new Font("Arial", Font.PLAIN, 40));
 		playButton.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				player1.setName(playername1Tf.getText()); 
-				player2.setName(playername2Tf.getText()); 
-				player3.setName(playername3Tf.getText()); 
+				player1.setName(playername1Tf.getText());
+				player2.setName(playername2Tf.getText());
+				player3.setName(playername3Tf.getText());
 				player4.setName(playername4Tf.getText());
 				dispose();
 				new MainView(player1, player2, player3, player4);
@@ -69,8 +69,7 @@ public class PlayernameView extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
 		setResizable(false);
-		setSize(1612, 879); 
+		setSize(1612, 879);
 	}
-	
-	
+
 }

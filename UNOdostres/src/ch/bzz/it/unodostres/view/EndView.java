@@ -5,6 +5,8 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -45,12 +47,35 @@ public class EndView extends JFrame {
 		player4lbl.setForeground(Color.YELLOW);
 		backBtn.setBackground(Color.YELLOW);
 		backBtn.setForeground(Color.RED);
+		backBtn.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				new StartView();
+
+			}
+		});
 		againBtn.setBackground(Color.YELLOW);
 		againBtn.setForeground(Color.RED);
+		againBtn.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				player1.setPoints(0);
+				player2.setPoints(0);
+				player3.setPoints(0);
+				player4.setPoints(0);
+				new MainView(player1, player2, player3, player4);
+
+			}
+		});
+
 		titlelbl.setForeground(Color.YELLOW);
 		btnPanel.add(backBtn);
 		btnPanel.add(againBtn);
-		titlelbl.setText("WOOOOOOOOON!!!!!");
+		titlelbl.setText(player1 + "WOOOOOOOOON!!!!!");
 		player1lbl.setText(player1.getName() + ": " + player1.getPoints() + " Points");
 		player2lbl.setText(player2.getName() + ": " + player2.getPoints() + " Points");
 		player3lbl.setText(player3.getName() + ": " + player3.getPoints() + " Points");
