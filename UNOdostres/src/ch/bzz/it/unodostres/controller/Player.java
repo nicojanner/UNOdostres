@@ -1,10 +1,13 @@
 package ch.bzz.it.unodostres.controller;
 
+import java.util.ArrayList;
+
 public class Player {
 
 	private Player player;
 	private String name;
 	private int points;
+	private ArrayList<Card> cards = new ArrayList<Card>();
 
 	public Player getPlayer() {
 		return player;
@@ -34,4 +37,9 @@ public class Player {
 		setName(this.name);
 		setPoints(this.points);
 	}
+	
+	public void setCard(Card card) {
+		cards.add(card);
+	}
+	
 }

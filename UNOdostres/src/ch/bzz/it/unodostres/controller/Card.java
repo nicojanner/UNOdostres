@@ -10,10 +10,17 @@ public class Card {
 	private int points;
 	private int number;
 	private String color;
+	private String type;
 
 	public Card(int number, String col) {
 
 		this.number = number;
+		this.color = col;
+	}
+	
+	public Card(String type, String col) {
+
+		this.type = type;
 		this.color = col;
 	}
 
