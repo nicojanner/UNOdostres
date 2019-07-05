@@ -48,5 +48,9 @@ public class Player {
 		cards.remove(card);
 		endPoints = endPoints - card.getPoints();
 	}
+
+	public ArrayList<Card> getCards() {
+		return cards;
+	}
 	
 }

@@ -1,5 +1,7 @@
 package ch.bzz.it.unodostres.controller;
 
+import ch.bzz.it.unodostres.view.StartView;
+
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -14,13 +16,14 @@ public class Game {
 	Player player4 = new Player(0, "name");
 
 	public static void main(String[] args) {
-
+		new Game();
 	}
 
 	public Game() {
 		createStack();
 		shuffle();
 		dealCards();
+		new StartView(player1, player2, player3, player4);
 	}
 
 	public void shuffle() {

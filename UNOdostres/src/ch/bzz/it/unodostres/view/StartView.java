@@ -1,5 +1,7 @@
 package ch.bzz.it.unodostres.view;
 
+import ch.bzz.it.unodostres.controller.Player;
+
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
@@ -20,7 +22,7 @@ public class StartView extends JFrame {
 	JPanel buttonPanel = new JPanel();
 	JLabel imageLabel = new JLabel(new ImageIcon(StartView.class.getResource("/startScreen.jpg")));
 
-	public StartView() {
+	public StartView(Player player1, Player player2, Player player3, Player player4) {
 		setTitle("UNOdostres");
 		getContentPane().setLayout(new BorderLayout());
 		getContentPane().add(imageLabel);
@@ -39,15 +41,10 @@ public class StartView extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				new PlayernameView();
+				new PlayernameView(player1, player2,player3, player4);
 
 			}
 		});
 
 	}
-
-	public static void main(String[] args) {
-		new StartView();
-	}
-
 }

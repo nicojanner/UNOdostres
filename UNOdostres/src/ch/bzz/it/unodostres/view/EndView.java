@@ -52,7 +52,7 @@ public class EndView extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				new StartView();
+				new StartView(player1, player2, player3, player4);
 
 			}
 		});
@@ -95,12 +95,4 @@ public class EndView extends JFrame {
 		pack();
 	}
 
-	public static void main(String[] args) {
-		Player player1 = new Player(100, "sadas");
-		Player player2 = new Player(500, "Besi");
-		Player player3 = new Player(245, "bla");
-		Player player4 = new Player(20, "Alen");
-		EndView ev = new EndView(player1, player2, player3, player4);
-		ev.setSize(1612, 879);
-	}
 }
