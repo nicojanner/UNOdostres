@@ -6,8 +6,9 @@ public class Player {
 
 	private Player player;
 	private String name;
-	private int points;
+	private int allPoints;
 	private ArrayList<Card> cards = new ArrayList<Card>();
+	private int endPoints;
 
 	public Player getPlayer() {
 		return player;
@@ -26,20 +27,26 @@ public class Player {
 	}
 
 	public int getPoints() {
-		return points;
+		return allPoints;
 	}
 
 	public void setPoints(int points) {
-		this.points = points;
+		this.allPoints = points;
 	}
 
 	public Player(int points, String name) {
 		setName(this.name);
-		setPoints(this.points);
+		setPoints(this.allPoints);
 	}
 	
 	public void setCard(Card card) {
+		endPoints = card.getPoints();
 		cards.add(card);
+	}
+	
+	public void removeCard(Card card) {
+		cards.remove(card);
+		endPoints = endPoints - card.getPoints();
 	}
 	
 }
