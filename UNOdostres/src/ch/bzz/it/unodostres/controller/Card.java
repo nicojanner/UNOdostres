@@ -12,16 +12,19 @@ public class Card {
 	private String color;
 	private String type;
 
-	public Card(int number, String col) {
+	
+	public Card(int number, String col, int points) {
 
 		this.number = number;
 		this.color = col;
+		this.points = points;
 	}
 	
-	public Card(String type, String col) {
+	public Card(String type, String col, int points) {
 
 		this.type = type;
 		this.color = col;
+		this.points = points;
 	}
 
 	public int getPoints() {
