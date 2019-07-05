@@ -57,21 +57,26 @@ public class Game {
 
 		for (String color : color_actionCard) {
 			for (int i = 0; i < actionCards.length; i++) {
-				stack.add(new Card(numbers[i], color));
+				int points = 50;
+				stack.add(new Card(numbers[i], color, points));
 			}
 		}
 
 		for (String color : colors) {
 			for (int i = 0; i < numbers.length; i++) {
-				stack.add(new Card(numbers[i], color));
+				int points = numbers[i];
+				stack.add(new Card(numbers[i], color, points));
 			}
 		}
 
 		for (String color : colors) {
 			for (int i = 0; i < actionCards_noNumber.length; i++) {
-				stack.add(new Card(actionCards_noNumber[i], color));
+				int points = 20;
+				stack.add(new Card(actionCards_noNumber[i], color, points));
 			}
 		}
+		
+	
 	}
 
 //	public static void main(String[] args) {
