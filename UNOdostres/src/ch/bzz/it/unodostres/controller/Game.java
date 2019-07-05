@@ -51,7 +51,7 @@ public class Game {
 	private void createStack() {
 		String[] colors = { "red", "yellow", "green", "blue" };
 		String[] color_actionCard = { "black" };
-		int[] numbers = { 0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9 };
+		int[] numbers = {  1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9, 0 };
 		String[] actionCards = { "changeColor", "changeColor", "plusFour", "plusFour" };
 		String[] actionCards_noNumber = { "block", "block", "switch", "switch", };
 
