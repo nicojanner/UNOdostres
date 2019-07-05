@@ -16,30 +16,9 @@ public class Game {
 	}
 
 	public Game() {
-
-		String[] colors = { "red", "yellow", "green", "blue" };
-		String[] color_actionCard = { "black" };
-		int[] numbers = { 0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9 };
-		String[] actionCards = { "changeColor", "changeColor", "plusFour", "plusFour" };
-		String[] actionCards_noNumber = { "block", "block", "switch", "switch", };
-
-		for (String color : color_actionCard) {
-			for (int i = 0; i < actionCards.length; i++) {
-				stack.add(new Card(numbers[i], color));
-			}
-		}
-
-		for (String color : colors) {
-			for (int i = 0; i < numbers.length; i++) {
-				stack.add(new Card(numbers[i], color));
-			}
-		}
-
-		for (String color : colors) {
-			for (int i = 0; i < actionCards_noNumber.length; i++) {
-				stack.add(new Card(actionCards_noNumber[i], color));
-			}
-		}
+		createStack();
+		shuffle();
+		dealCards();
 	}
 
 	public void shuffle() {
@@ -66,6 +45,32 @@ public class Game {
 			return true;
 		} else {
 			return false;
+		}
+	}
+	
+	private void createStack() {
+		String[] colors = { "red", "yellow", "green", "blue" };
+		String[] color_actionCard = { "black" };
+		int[] numbers = { 0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9 };
+		String[] actionCards = { "changeColor", "changeColor", "plusFour", "plusFour" };
+		String[] actionCards_noNumber = { "block", "block", "switch", "switch", };
+
+		for (String color : color_actionCard) {
+			for (int i = 0; i < actionCards.length; i++) {
+				stack.add(new Card(numbers[i], color));
+			}
+		}
+
+		for (String color : colors) {
+			for (int i = 0; i < numbers.length; i++) {
+				stack.add(new Card(numbers[i], color));
+			}
+		}
+
+		for (String color : colors) {
+			for (int i = 0; i < actionCards_noNumber.length; i++) {
+				stack.add(new Card(actionCards_noNumber[i], color));
+			}
 		}
 	}
 
