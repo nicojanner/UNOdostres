@@ -41,7 +41,7 @@ public class MainView extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setResizable(false);
 		setSize(1612, 879);
-		pointsPanel.setLayout(new FlowLayout());
+		pointsPanel.setLayout(new FlowLayout()); 
 		pointsPanel.add(pointsPlayer1);
 		pointsPanel.add(pointsPlayer2);
 		pointsPanel.add(pointsPlayer3);
