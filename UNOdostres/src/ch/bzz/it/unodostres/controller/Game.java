@@ -5,6 +5,8 @@ import java.util.Collections;
 
 public class Game {
 
+	private Card playedCard;
+
 	ArrayList<Card> stack = new ArrayList<Card>();
 	Player player1 = new Player(0, "name");
 	Player player2 = new Player(0, "name");
@@ -47,11 +49,11 @@ public class Game {
 			return false;
 		}
 	}
-	
+
 	private void createStack() {
 		String[] colors = { "red", "yellow", "green", "blue" };
 		String[] color_actionCard = { "black" };
-		int[] numbers = {  1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9, 0 };
+		int[] numbers = { 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9, 0 };
 		String[] actionCards = { "changeColor", "changeColor", "plusFour", "plusFour" };
 		String[] actionCards_noNumber = { "block", "block", "switch", "switch", };
 
@@ -75,10 +77,16 @@ public class Game {
 				stack.add(new Card(actionCards_noNumber[i], color, points));
 			}
 		}
-		
-	
+
 	}
 
+	private void gameRules(Card card) {
+		if ((playedCard.getColor() != card.getColor()) && (playedCard.getNumber() != card.getNumber())) {
+			System.out.println("Diese Karte dar nicht gespielt werden!");
+		}
+		
+		
+	}
 //	public static void main(String[] args) {
 //		
 //	}
