@@ -4,8 +4,11 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.BorderFactory;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -29,8 +32,9 @@ public class MainView extends JFrame {
 	JPanel pointsPanel = new JPanel();
 	JPanel mainPanel = new JPanel();
 	JPanel gamePanel = new JPanel();
-
 	JLabel tableLabel = new JLabel();
+	
+	JButton unoButton = new JButton("UNO");
 
 	public MainView(Player player1, Player player2, Player player3, Player player4) {
 		setTitle("UNOdostres");
@@ -42,6 +46,15 @@ public class MainView extends JFrame {
 		pointsPanel.add(pointsPlayer2);
 		pointsPanel.add(pointsPlayer3);
 		pointsPanel.add(pointsPlayer4);
+		unoButton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				
+			}
+		});
+		pointsPanel.add(unoButton);
 		getContentPane().add(pointsPanel, BorderLayout.NORTH);
 		tableLabel.setPreferredSize(new Dimension(800, 600));
 		tableLabel.setBackground(Color.WHITE);
