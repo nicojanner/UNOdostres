@@ -12,14 +12,13 @@ public class Card {
 	private String color;
 	private String type;
 
-	
 	public Card(int number, String col, int points) {
 
 		this.number = number;
 		this.color = col;
 		this.points = points;
 	}
-	
+
 	public Card(String type, String col, int points) {
 
 		this.type = type;
@@ -42,6 +41,16 @@ public class Card {
 	public void setCard(Card card) {
 		this.card = card;
 	}
-	
 
+	public int getNumber() {
+		return number;
+	}
+
+	public String getColor() {
+		return color;
+	}
+
+	public String getType() {
+		return type;
+	}
 }
