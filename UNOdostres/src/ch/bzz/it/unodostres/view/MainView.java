@@ -5,6 +5,8 @@ import ch.bzz.it.unodostres.controller.Player;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class MainView extends JFrame {
@@ -20,7 +22,7 @@ public class MainView extends JFrame {
     JLabel playerName2 = new JLabel();
     JLabel playerName3 = new JLabel();
     JLabel playerName4 = new JLabel();
-    JLabel tableLabel = new JLabel();
+    JTextArea tableLabel = new JTextArea();
 
     JPanel pointsPanel = new JPanel();
     JPanel mainPanel = new JPanel();
@@ -40,6 +42,7 @@ public class MainView extends JFrame {
     private ArrayList<Card> cards4 = new ArrayList<Card>();
 
     public MainView(Player player1, Player player2, Player player3, Player player4) {
+        ClickListener cl = new ClickListener();
         setTitle("UNOdostres");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setResizable(false);
@@ -54,7 +57,7 @@ public class MainView extends JFrame {
         cards4 = player1.getCards();
 
         for (int i = 0; i < cards1.size(); i++) {
-            player1CardPanel.add(new Button(cards1.get(i).getColor() + " " + cards1.get(i).getNumber()));
+            player1CardPanel.add(new Button(cards1.get(i).getColor() + " " + cards1.get(i).getNumber())/*.addActionListener(cl)*/);
         }
         for (int i = 0; i < cards2.size(); i++) {
             player2CardPanel.add(new Button(cards2.get(i).getColor() + " " + cards2.get(i).getNumber()));
@@ -117,6 +120,19 @@ public class MainView extends JFrame {
         getContentPane().add(mainPanel, BorderLayout.CENTER);
 
         setVisible(true);
+    }
+
+    private class ClickListener implements ActionListener {
+        public void actionPerformed(ActionEvent e) {
+            Object o = e.getSource();
+            JButton b = null;
+            String buttonText = "";
+
+            if(o instanceof JButton) {
+                b = (JButton) o;
+            }
+            tableLabel.setText(b.getText() + "wurde gesetzt.");
+        }
     }
 
 }
