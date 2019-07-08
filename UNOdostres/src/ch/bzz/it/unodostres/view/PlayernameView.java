@@ -32,7 +32,7 @@ public class PlayernameView extends JFrame {
 	JPanel inputPanel = new JPanel();
 
 
-	public PlayernameView(Player player1, Player player2, Player player3, Player player4) {
+	public PlayernameView(Player player1, Player player2, Player player3, Player player4 ) {
 		setTitle("UNOdostres");
 		getContentPane().setLayout(new BoxLayout(getContentPane(), BoxLayout.Y_AXIS));
 		title.setFont(new Font("Arial", Font.PLAIN, 75));

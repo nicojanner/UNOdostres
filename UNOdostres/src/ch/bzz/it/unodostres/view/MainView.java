@@ -13,33 +13,33 @@ public class MainView extends JFrame {
 
     private static final long serialVersionUID = 1L;
 
-    JLabel pointsPlayer1 = new JLabel();
-    JLabel pointsPlayer2 = new JLabel();
-    JLabel pointsPlayer3 = new JLabel();
-    JLabel pointsPlayer4 = new JLabel();
+    private JLabel pointsPlayer1 = new JLabel();
+    private JLabel pointsPlayer2 = new JLabel();
+    private JLabel pointsPlayer3 = new JLabel();
+    private JLabel pointsPlayer4 = new JLabel();
 
-    JLabel playerName1 = new JLabel();
-    JLabel playerName2 = new JLabel();
-    JLabel playerName3 = new JLabel();
-    JLabel playerName4 = new JLabel();
-    JTextArea tableLabel = new JTextArea();
+    private JLabel playerName1 = new JLabel();
+    private JLabel playerName2 = new JLabel();
+    private JLabel playerName3 = new JLabel();
+    private JLabel playerName4 = new JLabel();
+    private JTextArea tableLabel = new JTextArea();
 
-    JPanel pointsPanel = new JPanel();
-    JPanel mainPanel = new JPanel();
-    JPanel gamePanel = new JPanel();
-    JPanel player1CardPanel = new JPanel();
-    JPanel player2CardPanel = new JPanel();
-    JPanel player3CardPanel = new JPanel();
-    JPanel player4CardPanel = new JPanel();
-    JPanel player1Panel = new JPanel();
-    JPanel player2Panel = new JPanel();
-    JPanel player3Panel = new JPanel();
-    JPanel player4Panel = new JPanel();
+    private JPanel pointsPanel = new JPanel();
+    private JPanel mainPanel = new JPanel();
+    private JPanel gamePanel = new JPanel();
+    private JPanel player1CardPanel = new JPanel();
+    private JPanel player2CardPanel = new JPanel();
+    private JPanel player3CardPanel = new JPanel();
+    private JPanel player4CardPanel = new JPanel();
+    private JPanel player1Panel = new JPanel();
+    private JPanel player2Panel = new JPanel();
+    private JPanel player3Panel = new JPanel();
+    private JPanel player4Panel = new JPanel();
 
-    private ArrayList<Card> cards1 = new ArrayList<Card>();
-    private ArrayList<Card> cards2 = new ArrayList<Card>();
-    private ArrayList<Card> cards3 = new ArrayList<Card>();
-    private ArrayList<Card> cards4 = new ArrayList<Card>();
+    private ArrayList<Card> cards1;
+    private ArrayList<Card> cards2;
+    private ArrayList<Card> cards3;
+    private ArrayList<Card> cards4 ;
 
     public MainView(Player player1, Player player2, Player player3, Player player4) {
         ClickListener cl = new ClickListener();
@@ -55,18 +55,43 @@ public class MainView extends JFrame {
         cards2 = player1.getCards();
         cards3 = player1.getCards();
         cards4 = player1.getCards();
+        tableLabel.setSize(800,600);
+        tableLabel.setBackground(Color.white);
+        tableLabel.setBorder(BorderFactory.createLineBorder(Color.black));
+        tableLabel.setWrapStyleWord(true);
 
         for (int i = 0; i < cards1.size(); i++) {
-            player1CardPanel.add(new Button(cards1.get(i).getColor() + " " + cards1.get(i).getNumber())/*.addActionListener(cl)*/);
+            JButton btn = new JButton(cards1.get(i).getColor() + " " + cards1.get(i).getNumber());
+            String colorStr = cards1.get(i).getColor();
+            Color color = Color.getColor(colorStr);
+            btn.setBackground(color);
+            btn.addActionListener(cl);
+            player1CardPanel.add(btn);
         }
         for (int i = 0; i < cards2.size(); i++) {
-            player2CardPanel.add(new Button(cards2.get(i).getColor() + " " + cards2.get(i).getNumber()));
+            JButton btn = new JButton(cards2.get(i).getColor() + " " + cards2.get(i).getNumber());
+            String colorStr = cards2.get(i).getColor();
+            colorStr = colorStr.toUpperCase();
+            Color color = Color.getColor(colorStr);
+            btn.setBackground(color);
+            btn.addActionListener(cl);
+            player2CardPanel.add(btn);
         }
         for (int i = 0; i < cards3.size(); i++) {
-            player3CardPanel.add(new Button(cards3.get(i).getColor() + " " + cards3.get(i).getNumber()));
+            JButton btn = new JButton(cards3.get(i).getColor() + " " + cards3.get(i).getNumber());
+            String colorStr = cards3.get(i).getColor();
+            Color color = Color.getColor(colorStr);
+            btn.setBackground(color);
+            btn.addActionListener(cl);
+            player3CardPanel.add(btn);
         }
         for (int i = 0; i < cards4.size(); i++) {
-            player4CardPanel.add(new Button(cards4.get(i).getColor() + " " + cards4.get(i).getNumber()));
+            JButton btn = new JButton(cards4.get(i).getColor() + " " + cards4.get(i).getNumber());
+            String colorStr = cards4.get(i).getColor();
+            Color color = Color.getColor(colorStr);
+            btn.setBackground(color);
+            btn.addActionListener(cl);
+            player4CardPanel.add(btn);
         }
 
         pointsPanel.setLayout(new FlowLayout());
@@ -76,10 +101,6 @@ public class MainView extends JFrame {
         pointsPanel.add(pointsPlayer4);
 
         getContentPane().add(pointsPanel, BorderLayout.WEST);
-
-        tableLabel.setPreferredSize(new Dimension(800, 600));
-        tableLabel.setBackground(Color.WHITE);
-        tableLabel.setBorder(BorderFactory.createLineBorder(Color.black));
 
         gamePanel.setLayout(new BorderLayout(30, 30));
 
@@ -125,13 +146,9 @@ public class MainView extends JFrame {
     private class ClickListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             Object o = e.getSource();
-            JButton b = null;
-            String buttonText = "";
+            JButton b = (JButton) o;
 
-            if(o instanceof JButton) {
-                b = (JButton) o;
-            }
-            tableLabel.setText(b.getText() + "wurde gesetzt.");
+            tableLabel.setText(b.getText() + " wurde gesetzt.");
         }
     }
 

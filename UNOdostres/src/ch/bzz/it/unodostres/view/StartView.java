@@ -36,14 +36,10 @@ public class StartView extends JFrame {
 		setResizable(false);
 		pack();
 
-		startButton.addActionListener(new ActionListener() {
+		startButton.addActionListener(e -> {
+			dispose();
+			new PlayernameView(player1, player2,player3, player4);
 
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				dispose();
-				new PlayernameView(player1, player2,player3, player4);
-
-			}
 		});
 
 	}
