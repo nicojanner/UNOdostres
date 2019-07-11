@@ -59,6 +59,7 @@ public class MainView extends JFrame {
         tableLabel.setBackground(Color.white);
         tableLabel.setBorder(BorderFactory.createLineBorder(Color.black));
         tableLabel.setWrapStyleWord(true);
+        tableLabel.setEditable(false);
 
         for (int i = 0; i < cards1.size(); i++) {
             JButton btn = new JButton(cards1.get(i).getColor() + " " + cards1.get(i).getNumber());
@@ -148,7 +149,7 @@ public class MainView extends JFrame {
             Object o = e.getSource();
             JButton b = (JButton) o;
 
-            tableLabel.setText(b.getText() + " wurde gesetzt.");
+            tableLabel.append(b.getText() + " wurde gesetzt.");
         }
     }
 
