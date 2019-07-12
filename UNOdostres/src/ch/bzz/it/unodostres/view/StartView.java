@@ -41,7 +41,6 @@ public class StartView extends JFrame {
 		startButton.addActionListener(e -> {
 			dispose();
 			new PlayernameView(player1, player2,player3, player4, stack);
-
 		});
 
 	}
