@@ -1,5 +1,6 @@
 package ch.bzz.it.unodostres.controller;
 
+import ch.bzz.it.unodostres.view.MainView;
 import ch.bzz.it.unodostres.view.StartView;
 
 import java.util.ArrayList;
@@ -14,6 +15,7 @@ public class Game {
 	Player player2 = new Player(0, "name");
 	Player player3 = new Player(0, "name");
 	Player player4 = new Player(0, "name");
+	Card card = null;
 
 	public static void main(String[] args) {
 		new Game();
@@ -23,7 +25,11 @@ public class Game {
 		createStack();
 		shuffle();
 		dealCards();
-		new StartView(player1, player2, player3, player4);
+		new StartView(player1, player2, player3, player4, stack);
+	}
+
+	public Game(MainView main) {
+
 	}
 
 	public void shuffle() {
@@ -55,17 +61,9 @@ public class Game {
 
 	private void createStack() {
 		String[] colors = { "red", "yellow", "green", "blue" };
-		String[] color_actionCard = { "black" };
 		int[] numbers = { 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9, 0 };
-		String[] actionCards = { "changeColor", "changeColor", "plusFour", "plusFour" };
-		String[] actionCards_noNumber = { "block", "block", "switch", "switch", };
 
-		for (String color : color_actionCard) {
-			for (int i = 0; i < actionCards.length; i++) {
-				int points = 50;
-				stack.add(new Card(numbers[i], color, points));
-			}
-		}
+
 
 		for (String color : colors) {
 			for (int i = 0; i < numbers.length; i++) {
@@ -74,24 +72,13 @@ public class Game {
 			}
 		}
 
-		for (String color : colors) {
-			for (int i = 0; i < actionCards_noNumber.length; i++) {
-				int points = 20;
-				stack.add(new Card(actionCards_noNumber[i], color, points));
-			}
-		}
-
 	}
 
-	private void gameRules(Card card) {
-		if ((playedCard.getColor() != card.getColor()) && (playedCard.getNumber() != card.getNumber())) {
-			System.out.println("Diese Karte dar nicht gespielt werden!");
+	public boolean gameRules(Card laidCard, Card newCard) {
+		if ((laidCard.getColor().equals(newCard.getColor())) || (laidCard.getNumber() == newCard.getNumber())) {
+			return true;
+		} else {
+			return false;
 		}
-		
-		
 	}
-//	public static void main(String[] args) {
-//		
-//	}
-
 }

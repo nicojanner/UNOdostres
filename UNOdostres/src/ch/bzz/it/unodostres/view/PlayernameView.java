@@ -4,6 +4,7 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -12,6 +13,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import ch.bzz.it.unodostres.controller.Card;
 import ch.bzz.it.unodostres.controller.Player;
 
 public class PlayernameView extends JFrame {
@@ -32,7 +34,7 @@ public class PlayernameView extends JFrame {
 	JPanel inputPanel = new JPanel();
 
 
-	public PlayernameView(Player player1, Player player2, Player player3, Player player4 ) {
+	public PlayernameView(Player player1, Player player2, Player player3, Player player4, ArrayList<Card> stack) {
 		setTitle("UNOdostres");
 		getContentPane().setLayout(new BoxLayout(getContentPane(), BoxLayout.Y_AXIS));
 		title.setFont(new Font("Arial", Font.PLAIN, 75));
@@ -49,7 +51,6 @@ public class PlayernameView extends JFrame {
 		inputPanel.add(playername4Tf);
 		playButton.setFont(new Font("Arial", Font.PLAIN, 40));
 		playButton.addActionListener(new ActionListener() {
-
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				player1.setName(playername1Tf.getText());
@@ -57,7 +58,7 @@ public class PlayernameView extends JFrame {
 				player3.setName(playername3Tf.getText());
 				player4.setName(playername4Tf.getText());
 				dispose();
-				new MainView(player1, player2, player3, player4);
+				new MainView(player1, player2, player3, player4, stack);
 			}
 		});
 		getContentPane().add(inputPanel);

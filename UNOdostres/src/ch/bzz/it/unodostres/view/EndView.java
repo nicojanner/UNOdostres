@@ -7,6 +7,7 @@ import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -14,6 +15,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import ch.bzz.it.unodostres.controller.Card;
 import ch.bzz.it.unodostres.controller.Player;
 
 public class EndView extends JFrame {
@@ -28,7 +30,7 @@ public class EndView extends JFrame {
 	JPanel mainPanel = new JPanel();
 	JPanel btnPanel = new JPanel();
 
-	public EndView(Player player1, Player player2, Player player3, Player player4) {
+	public EndView(Player player1, Player player2, Player player3, Player player4, ArrayList<Card> stack) {
 		setTitle("UNOdostres");
 		getContentPane().setLayout(new BorderLayout());
 		mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
@@ -52,7 +54,7 @@ public class EndView extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				new StartView(player1, player2, player3, player4);
+				new StartView(player1, player2, player3, player4, stack);
 
 			}
 		});
@@ -67,7 +69,7 @@ public class EndView extends JFrame {
 				player2.setPoints(0);
 				player3.setPoints(0);
 				player4.setPoints(0);
-				new MainView(player1, player2, player3, player4);
+				new MainView(player1, player2, player3, player4, stack);
 
 			}
 		});
@@ -94,5 +96,4 @@ public class EndView extends JFrame {
 		setResizable(false);
 		pack();
 	}
-
 }

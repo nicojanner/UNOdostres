@@ -1,6 +1,7 @@
 package ch.bzz.it.unodostres.view;
 
 import ch.bzz.it.unodostres.controller.Card;
+import ch.bzz.it.unodostres.controller.Game;
 import ch.bzz.it.unodostres.controller.Player;
 
 import javax.swing.*;
@@ -39,11 +40,12 @@ public class MainView extends JFrame {
     private ArrayList<Card> cards1;
     private ArrayList<Card> cards2;
     private ArrayList<Card> cards3;
-    private ArrayList<Card> cards4 ;
-    
+    private ArrayList<Card> cards4;
+    private Card card;
+    private Game game = new Game(this);
     private JScrollPane scroll = new JScrollPane(tableLabel);
 
-    public MainView(Player player1, Player player2, Player player3, Player player4) {
+    public MainView(Player player1, Player player2, Player player3, Player player4, ArrayList<Card> stack) {
         ClickListener cl = new ClickListener();
         setTitle("UNOdostres");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -54,14 +56,16 @@ public class MainView extends JFrame {
         player3CardPanel.setLayout(new FlowLayout());
         player4CardPanel.setLayout(new BoxLayout(player4CardPanel, BoxLayout.Y_AXIS));
         cards1 = player1.getCards();
-        cards2 = player1.getCards();
-        cards3 = player1.getCards();
-        cards4 = player1.getCards();
+        cards2 = player2.getCards();
+        cards3 = player3.getCards();
+        cards4 = player4.getCards();
         tableLabel.setSize(800,600);
         tableLabel.setBackground(Color.white);
         tableLabel.setBorder(BorderFactory.createLineBorder(Color.black));
         tableLabel.setWrapStyleWord(true);
         tableLabel.setEditable(false);
+        card = stack.get(1);
+        tableLabel.append(card.getColor() + " " + card.getNumber() + " liegt auf dem Stapel. \n");
         scroll.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 
         for (int i = 0; i < cards1.size(); i++) {
@@ -151,8 +155,20 @@ public class MainView extends JFrame {
         public void actionPerformed(ActionEvent e) {
             Object o = e.getSource();
             JButton b = (JButton) o;
+            String s = b.getText();
+            String[] parts = s.split(" ");
+            String part1 = parts[0];
+            String part2 = parts[1];
+            int number = Integer.parseInt(part2);
 
-            tableLabel.append(b.getText() + " wurde gesetzt.");
+            if(game.gameRules(card, new Card(number, part1, 0))) {
+                tableLabel.append(b.getText() + " wurde gesetzt. \n");
+                b.setVisible(false);
+                card = new Card(number, part1, 0);
+            } else {
+                tableLabel.append("Diese Karte kann nicht gespielt werden. Wähle eine andere Karte aus. \n");
+                tableLabel.append(card.getColor() + " " + card.getNumber() + " liegt auf dem Stapel. \n");
+            }
         }
     }
 
