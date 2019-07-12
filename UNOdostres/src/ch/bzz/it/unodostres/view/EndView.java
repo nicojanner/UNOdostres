@@ -16,6 +16,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import ch.bzz.it.unodostres.controller.Card;
+import ch.bzz.it.unodostres.controller.Game;
 import ch.bzz.it.unodostres.controller.Player;
 
 public class EndView extends JFrame {
@@ -95,5 +96,14 @@ public class EndView extends JFrame {
 		setVisible(true);
 		setResizable(false);
 		pack();
+	}
+
+	public static void main(String[] args) {
+		ArrayList<Card> stack = new ArrayList<Card>();
+		Player player1 = new Player(0, "name");
+		Player player2 = new Player(0, "name");
+		Player player3 = new Player(0, "name");
+		Player player4 = new Player(0, "name");
+		new EndView(player1, player2, player3, player4, stack);
 	}
 }

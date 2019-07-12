@@ -45,7 +45,16 @@ public class MainView extends JFrame {
     private Game game = new Game(this);
     private JScrollPane scroll = new JScrollPane(tableLabel);
 
+    private Player player11;
+    private Player player22;
+    private Player player33;
+    private Player player44;
+
     public MainView(Player player1, Player player2, Player player3, Player player4, ArrayList<Card> stack) {
+        player11 = player1;
+        player22 = player2;
+        player33 = player3;
+        player44 = player4;
         ClickListener cl = new ClickListener();
         setTitle("UNOdostres");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -66,6 +75,8 @@ public class MainView extends JFrame {
         tableLabel.setEditable(false);
         card = stack.get(1);
         tableLabel.append(card.getColor() + " " + card.getNumber() + " liegt auf dem Stapel. \n");
+        tableLabel.append(player1.getName() + " ist an der Reihe. \n");
+        playerName1.setForeground(Color.red);
         scroll.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 
         for (int i = 0; i < cards1.size(); i++) {
@@ -151,6 +162,30 @@ public class MainView extends JFrame {
         setVisible(true);
     }
 
+    private void rotatePlayer() {
+        if(playerName1.getForeground().equals(Color.blue)) {
+            playerName1.setForeground(Color.black);
+            playerName2.setForeground(Color.blue);
+
+        }
+        if(playerName2.getForeground().equals(Color.blue)) {
+            playerName2.setForeground(Color.black);
+            playerName3.setForeground(Color.blue);
+
+        }
+        if(playerName3.getForeground().equals(Color.blue)) {
+            playerName3.setForeground(Color.black);
+            playerName4.setForeground(Color.blue);
+
+        }
+        if(playerName4.getForeground().equals(Color.blue)) {
+            playerName4.setForeground(Color.black);
+            playerName1.setForeground(Color.blue);
+
+        }
+
+    }
+
     private class ClickListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             Object o = e.getSource();
@@ -165,6 +200,9 @@ public class MainView extends JFrame {
                 tableLabel.append(b.getText() + " wurde gesetzt. \n");
                 b.setVisible(false);
                 card = new Card(number, part1, 0);
+                rotatePlayer();
+                //tableLabel.append(player.getName() + " ist an der Reihe. \n");
+
             } else {
                 tableLabel.append("Diese Karte kann nicht gespielt werden. Wähle eine andere Karte aus. \n");
                 tableLabel.append(card.getColor() + " " + card.getNumber() + " liegt auf dem Stapel. \n");
