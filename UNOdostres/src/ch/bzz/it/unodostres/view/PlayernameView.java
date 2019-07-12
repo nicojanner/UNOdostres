@@ -50,16 +50,13 @@ public class PlayernameView extends JFrame {
 		inputPanel.add(playername4Label);
 		inputPanel.add(playername4Tf);
 		playButton.setFont(new Font("Arial", Font.PLAIN, 40));
-		playButton.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				player1.setName(playername1Tf.getText());
-				player2.setName(playername2Tf.getText());
-				player3.setName(playername3Tf.getText());
-				player4.setName(playername4Tf.getText());
-				dispose();
-				new MainView(player1, player2, player3, player4, stack);
-			}
+		playButton.addActionListener(e -> {
+			player1.setName(playername1Tf.getText());
+			player2.setName(playername2Tf.getText());
+			player3.setName(playername3Tf.getText());
+			player4.setName(playername4Tf.getText());
+			dispose();
+			new MainView(player1, player2, player3, player4, stack);
 		});
 		getContentPane().add(inputPanel);
 		getContentPane().add(playButton);
