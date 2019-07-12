@@ -3,6 +3,7 @@ package ch.bzz.it.unodostres.view;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -20,6 +21,15 @@ import ch.bzz.it.unodostres.controller.Player;
 
 public class EndView extends JFrame {
 
+	public static void main(String[] args) {
+		ArrayList<Card> stack = new ArrayList<Card>();
+		Player player1 = new Player(0, "name");
+		Player player2 = new Player(0, "name");
+		Player player3 = new Player(0, "name");
+		Player player4 = new Player(0, "name");
+		new EndView(player1, player2, player3, player4, stack);
+	}
+
 	JLabel titlelbl = new JLabel();
 	JLabel player1lbl = new JLabel();
 	JLabel player2lbl = new JLabel();
@@ -34,6 +44,7 @@ public class EndView extends JFrame {
 		setTitle("UNOdostres");
 		getContentPane().setLayout(new BorderLayout());
 		mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
+		mainPanel.setPreferredSize(new Dimension(1200, 700));
 		btnPanel.setLayout(new FlowLayout());
 		againBtn.setAlignmentX(Component.CENTER_ALIGNMENT);
 		backBtn.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -77,7 +88,11 @@ public class EndView extends JFrame {
 		titlelbl.setForeground(Color.YELLOW);
 		btnPanel.add(backBtn);
 		btnPanel.add(againBtn);
-		titlelbl.setText(player1 + "WOOOOOOOOON!!!!!");
+		if (player1.getName() != null) {
+			titlelbl.setText(player1.getName() + " WOOOON!!!!!");
+		} else {
+			titlelbl.setText( "unnamed" + " WOOOON!!!!!");
+		}
 		player1lbl.setText(player1.getName() + ": " + player1.getPoints() + " Points");
 		player2lbl.setText(player2.getName() + ": " + player2.getPoints() + " Points");
 		player3lbl.setText(player3.getName() + ": " + player3.getPoints() + " Points");
@@ -92,6 +107,7 @@ public class EndView extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		mainPanel.setBackground(Color.RED);
 		btnPanel.setBackground(Color.RED);
+		mainPanel.setSize(1000, 1000);
 		setVisible(true);
 		setResizable(false);
 		pack();
