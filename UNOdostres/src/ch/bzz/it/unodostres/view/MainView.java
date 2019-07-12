@@ -40,6 +40,8 @@ public class MainView extends JFrame {
     private ArrayList<Card> cards2;
     private ArrayList<Card> cards3;
     private ArrayList<Card> cards4 ;
+    
+    private JScrollPane scroll = new JScrollPane(tableLabel);
 
     public MainView(Player player1, Player player2, Player player3, Player player4) {
         ClickListener cl = new ClickListener();
@@ -60,6 +62,7 @@ public class MainView extends JFrame {
         tableLabel.setBorder(BorderFactory.createLineBorder(Color.black));
         tableLabel.setWrapStyleWord(true);
         tableLabel.setEditable(false);
+        scroll.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 
         for (int i = 0; i < cards1.size(); i++) {
             JButton btn = new JButton(cards1.get(i).getColor() + " " + cards1.get(i).getNumber());
@@ -136,7 +139,7 @@ public class MainView extends JFrame {
         gamePanel.add(player2Panel, BorderLayout.EAST);
         gamePanel.add(player3Panel, BorderLayout.SOUTH);
         gamePanel.add(player4Panel, BorderLayout.WEST);
-        gamePanel.add(tableLabel, BorderLayout.CENTER);
+        gamePanel.add(scroll, BorderLayout.CENTER);
 
         mainPanel.add(gamePanel);
         getContentPane().add(mainPanel, BorderLayout.CENTER);
