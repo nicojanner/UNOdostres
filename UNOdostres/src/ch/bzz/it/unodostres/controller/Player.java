@@ -2,55 +2,89 @@ package ch.bzz.it.unodostres.controller;
 
 import java.util.ArrayList;
 
+/** 
+ * Class represents a Player with the points, cards and name a player has.
+ * @author Nadezha Maurer, Alen Redza
+ * @version 1.0
+*/
 public class Player {
 
-    private Player player;
-    private String name;
-    private int allPoints;
-    private ArrayList<Card> cards = new ArrayList<Card>();
-    private int endPoints;
+	private Player player;
+	private String name;
+	private int allPoints;
+	private ArrayList<Card> cards = new ArrayList<Card>();
+	private int endPoints;
 
-    public Player getPlayer() {
-        return player;
-    }
+	public Player(int points, String name) {
+		setName(this.name);
+		setPoints(this.allPoints);
+	}
 
-    public void setPlayer(Player player) {
-        this.player = player;
-    }
+    /**
+     * @return current player
+     */
+	public Player getPlayer() {
+		return player;
+	}
 
-    public String getName() {
-        return name;
-    }
+    /**
+     * @param player to set the player
+     */
+	public void setPlayer(Player player) {
+		this.player = player;
+	}
 
-    public void setName(String name) {
-        this.name = name;
-    }
+    /**
+     * @return current name of player
+     */
+	public String getName() {
+		return name;
+	}
 
-    public int getPoints() {
-        return allPoints;
-    }
+    /**
+     * @param name to set the name 
+     */
+	public void setName(String name) {
+		this.name = name;
+	}
 
-    public void setPoints(int points) {
-        this.allPoints = points;
-    }
+    /**
+     * @return all points of player 
+     */
+	public int getPoints() {
+		return allPoints;
+	}
 
-    public Player(int points, String name) {
-        setName(this.name);
-        setPoints(this.allPoints);
-    }
+    /**
+     * @param points to set the points
+     */
+	public void setPoints(int points) {
+		this.allPoints = points;
+	}
 
-    public void setCard(Card card) {
-        endPoints = card.getPoints();
-        cards.add(card);
-    }
+    /**
+     * Gets the points of the card and adds to card
+     * @param card to set the card
+     */
+	public void setCard(Card card) {
+		endPoints = card.getPoints();
+		cards.add(card);
+	}
 
-    public void removeCard(Card card) {
-        cards.remove(card);
-        endPoints = endPoints - card.getPoints();
-    }
+    /**
+     * Removes the card from the array list
+     * @param card to remove the card
+     */
+	public void removeCard(Card card) {
+		cards.remove(card);
+		endPoints = endPoints - card.getPoints();
+	}
 
-    public ArrayList<Card> getCards() {
-        return cards;
-    }
+    /**
+     * @return ArrayList of cards
+     */
+	public ArrayList<Card> getCards() {
+		return cards;
+	}
 
 }
