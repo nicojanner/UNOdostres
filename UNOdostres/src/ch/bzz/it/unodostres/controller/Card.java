@@ -6,51 +6,51 @@ import java.util.Collections;
 
 public class Card {
 
-	private Card card;
-	private int points;
-	private int number;
-	private String color;
-	private String type;
+    private Card card;
+    private int points;
+    private int number;
+    private String color;
+    private String type;
 
-	public Card(int number, String col, int points) {
+    public Card(int number, String col, int points) {
 
-		this.number = number;
-		this.color = col;
-		this.points = points;
-	}
+        this.number = number;
+        this.color = col;
+        this.points = points;
+    }
 
-	public Card(String type, String col, int points) {
+    public Card(String type, String col, int points) {
 
-		this.type = type;
-		this.color = col;
-		this.points = points;
-	}
+        this.type = type;
+        this.color = col;
+        this.points = points;
+    }
 
-	public int getPoints() {
-		return points;
-	}
+    public int getPoints() {
+        return points;
+    }
 
-	public void setPoints(int points) {
-		this.points = points;
-	}
+    public void setPoints(int points) {
+        this.points = points;
+    }
 
-	public Card getCard() {
-		return card;
-	}
+    public Card getCard() {
+        return card;
+    }
 
-	public void setCard(Card card) {
-		this.card = card;
-	}
+    public void setCard(Card card) {
+        this.card = card;
+    }
 
-	public int getNumber() {
-		return number;
-	}
+    public int getNumber() {
+        return number;
+    }
 
-	public String getColor() {
-		return color;
-	}
+    public String getColor() {
+        return color;
+    }
 
-	public String getType() {
-		return type;
-	}
+    public String getType() {
+        return type;
+    }
 }

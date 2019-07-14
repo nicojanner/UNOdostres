@@ -14,18 +14,12 @@ public class MainView extends JFrame {
 
     private static final long serialVersionUID = 1L;
 
-    private JLabel pointsPlayer1 = new JLabel();
-    private JLabel pointsPlayer2 = new JLabel();
-    private JLabel pointsPlayer3 = new JLabel();
-    private JLabel pointsPlayer4 = new JLabel();
-
     private JLabel playerName1 = new JLabel();
     private JLabel playerName2 = new JLabel();
     private JLabel playerName3 = new JLabel();
     private JLabel playerName4 = new JLabel();
-    private JTextArea tableLabel = new JTextArea();
+    private JTextArea gameTxtArea = new JTextArea();
 
-    private JPanel pointsPanel = new JPanel();
     private JPanel mainPanel = new JPanel();
     private JPanel gamePanel = new JPanel();
     private JPanel player1CardPanel = new JPanel();
@@ -37,29 +31,46 @@ public class MainView extends JFrame {
     private JPanel player3Panel = new JPanel();
     private JPanel player4Panel = new JPanel();
 
+    private JButton pull1Btn = new JButton("Ziehen");
+    private JButton pull2Btn = new JButton("Ziehen");
+    private JButton pull3Btn = new JButton("Ziehen");
+    private JButton pull4Btn = new JButton("Ziehen");
+
     private ArrayList<Card> cards1;
     private ArrayList<Card> cards2;
     private ArrayList<Card> cards3;
     private ArrayList<Card> cards4;
+    private ArrayList<Card> stack;
     private Card card;
+    private Card pulledCard;
     private Game game = new Game(this);
-    private JScrollPane scroll = new JScrollPane(tableLabel);
 
-    private Player player11;
-    private Player player22;
-    private Player player33;
-    private Player player44;
+    private int counter1 = 0;
+    private int counter2 = 0;
+    private int counter3 = 0;
+    private int counter4 = 0;
+
+    private Player player1;
+    private Player player2;
+    private Player player3;
+    private Player player4;
+
 
     public MainView(Player player1, Player player2, Player player3, Player player4, ArrayList<Card> stack) {
-        player11 = player1;
-        player22 = player2;
-        player33 = player3;
-        player44 = player4;
+        this.player1 = player1;
+        this.player2 = player2;
+        this.player3 = player3;
+        this.player4 = player4;
+        this.stack = stack;
         ClickListener cl = new ClickListener();
         setTitle("UNOdostres");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setResizable(false);
-        setSize(1612, 879);
+        setSize(1000, 500);
+        Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
+        int x = (int) ((dimension.getWidth() - this.getWidth()) / 2);
+        int y = (int) ((dimension.getHeight() - this.getHeight()) / 2);
+        setLocation(x, y);
         player1CardPanel.setLayout(new FlowLayout());
         player2CardPanel.setLayout(new BoxLayout(player2CardPanel, BoxLayout.Y_AXIS));
         player3CardPanel.setLayout(new FlowLayout());
@@ -68,59 +79,224 @@ public class MainView extends JFrame {
         cards2 = player2.getCards();
         cards3 = player3.getCards();
         cards4 = player4.getCards();
-        tableLabel.setSize(800,600);
-        tableLabel.setBackground(Color.white);
-        tableLabel.setBorder(BorderFactory.createLineBorder(Color.black));
-        tableLabel.setWrapStyleWord(true);
-        tableLabel.setEditable(false);
+        gameTxtArea.setBackground(Color.white);
+        gameTxtArea.setBorder(BorderFactory.createLineBorder(Color.black));
+        gameTxtArea.setWrapStyleWord(true);
+        gameTxtArea.setEditable(false);
         card = stack.get(1);
-        tableLabel.append(card.getColor() + " " + card.getNumber() + " liegt auf dem Stapel. \n");
-        tableLabel.append(player1.getName() + " ist an der Reihe. \n");
-        playerName1.setForeground(Color.red);
-        scroll.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+        stack.remove(1);
+        gameTxtArea.append(card.getColor() + " " + card.getNumber() + " liegt auf dem Stapel. \n");
+        gameTxtArea.append(player1.getName() + " ist an der Reihe. \n");
+        JScrollPane scroll = new JScrollPane(gameTxtArea,
+                JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+        scroll.setPreferredSize(new Dimension(100,50));
+
+        pull1Btn.setBackground(Color.black);
+        pull2Btn.setBackground(Color.black);
+        pull3Btn.setBackground(Color.black);
+        pull4Btn.setBackground(Color.black);
+        pull1Btn.setForeground(Color.white);
+        pull2Btn.setForeground(Color.white);
+        pull3Btn.setForeground(Color.white);
+        pull4Btn.setForeground(Color.white);
+
+        pull1Btn.addActionListener(new ClickListener() {
+            public void actionPerformed(ActionEvent e) {
+                pulledCard = stack.get(1);
+                stack.remove(1);
+                JButton btn = new JButton(pulledCard.getColor() + " " + pulledCard.getNumber());
+                switch (pulledCard.getColor()) {
+                    case "red":
+                        btn.setBackground(Color.red);
+                        break;
+                    case "yellow":
+                        btn.setBackground(Color.yellow);
+                        break;
+                    case "green":
+                        btn.setBackground(Color.green);
+                        break;
+                    case "blue":
+                        btn.setBackground(Color.blue);
+                        break;
+                }
+                btn.setForeground(Color.black);
+                counter1++;
+                btn.addActionListener(cl);
+                player1CardPanel.add(btn);
+                player1CardPanel.revalidate();
+                player1CardPanel.repaint();
+            }
+        });
+        pull2Btn.addActionListener(new ClickListener() {
+            public void actionPerformed(ActionEvent e) {
+                pulledCard = stack.get(1);
+                stack.remove(1);
+                JButton btn = new JButton(pulledCard.getColor() + " " + pulledCard.getNumber());
+                switch (pulledCard.getColor()) {
+                    case "red":
+                        btn.setBackground(Color.red);
+                        break;
+                    case "yellow":
+                        btn.setBackground(Color.yellow);
+                        break;
+                    case "green":
+                        btn.setBackground(Color.green);
+                        break;
+                    case "blue":
+                        btn.setBackground(Color.blue);
+                        break;
+                }
+                btn.setForeground(Color.black);
+                btn.addActionListener(cl);
+                counter2++;
+                player2CardPanel.add(btn);
+                player2CardPanel.revalidate();
+                player2CardPanel.repaint();
+            }
+        });
+        pull3Btn.addActionListener(new ClickListener() {
+            public void actionPerformed(ActionEvent e) {
+                pulledCard = stack.get(1);
+                stack.remove(1);
+                JButton btn = new JButton(pulledCard.getColor() + " " + pulledCard.getNumber());
+                switch (pulledCard.getColor()) {
+                    case "red":
+                        btn.setBackground(Color.red);
+                        break;
+                    case "yellow":
+                        btn.setBackground(Color.yellow);
+                        break;
+                    case "green":
+                        btn.setBackground(Color.green);
+                        break;
+                    case "blue":
+                        btn.setBackground(Color.blue);
+                        break;
+                }
+                btn.setForeground(Color.black);
+                btn.addActionListener(cl);
+                counter3++;
+                player3CardPanel.add(btn);
+                player3CardPanel.revalidate();
+                player3CardPanel.repaint();
+            }
+        });
+        pull4Btn.addActionListener(new ClickListener() {
+            public void actionPerformed(ActionEvent e) {
+                pulledCard = stack.get(1);
+                stack.remove(1);
+                JButton btn = new JButton(pulledCard.getColor() + " " + pulledCard.getNumber());
+                switch (pulledCard.getColor()) {
+                    case "red":
+                        btn.setBackground(Color.red);
+                        break;
+                    case "yellow":
+                        btn.setBackground(Color.yellow);
+                        break;
+                    case "green":
+                        btn.setBackground(Color.green);
+                        break;
+                    case "blue":
+                        btn.setBackground(Color.blue);
+                        break;
+                }
+                btn.setForeground(Color.black);
+                btn.addActionListener(cl);
+                counter4++;
+                player4CardPanel.add(btn);
+                player4CardPanel.revalidate();
+                player4CardPanel.repaint();
+            }
+        });
+        player1CardPanel.add(pull1Btn);
+        player2CardPanel.add(pull2Btn);
+        player3CardPanel.add(pull3Btn);
+        player4CardPanel.add(pull4Btn);
 
         for (int i = 0; i < cards1.size(); i++) {
             JButton btn = new JButton(cards1.get(i).getColor() + " " + cards1.get(i).getNumber());
-            String colorStr = cards1.get(i).getColor();
-            Color color = Color.getColor(colorStr);
-            btn.setBackground(color);
+            switch (cards1.get(i).getColor()) {
+                case "red":
+                    btn.setBackground(Color.red);
+                    break;
+                case "yellow":
+                    btn.setBackground(Color.yellow);
+                    break;
+                case "green":
+                    btn.setBackground(Color.green);
+                    break;
+                case "blue":
+                    btn.setBackground(Color.blue);
+                    break;
+            }
+            btn.setForeground(Color.black);
             btn.addActionListener(cl);
+            counter1++;
             player1CardPanel.add(btn);
         }
         for (int i = 0; i < cards2.size(); i++) {
             JButton btn = new JButton(cards2.get(i).getColor() + " " + cards2.get(i).getNumber());
-            String colorStr = cards2.get(i).getColor();
-            colorStr = colorStr.toUpperCase();
-            Color color = Color.getColor(colorStr);
-            btn.setBackground(color);
+            switch (cards2.get(i).getColor()) {
+                case "red":
+                    btn.setBackground(Color.red);
+                    break;
+                case "yellow":
+                    btn.setBackground(Color.yellow);
+                    break;
+                case "green":
+                    btn.setBackground(Color.green);
+                    break;
+                case "blue":
+                    btn.setBackground(Color.blue);
+                    break;
+            }
+            btn.setForeground(Color.black);
             btn.addActionListener(cl);
+            counter2++;
             player2CardPanel.add(btn);
         }
         for (int i = 0; i < cards3.size(); i++) {
             JButton btn = new JButton(cards3.get(i).getColor() + " " + cards3.get(i).getNumber());
-            String colorStr = cards3.get(i).getColor();
-            Color color = Color.getColor(colorStr);
-            btn.setBackground(color);
+            switch (cards3.get(i).getColor()) {
+                case "red":
+                    btn.setBackground(Color.red);
+                    break;
+                case "yellow":
+                    btn.setBackground(Color.yellow);
+                    break;
+                case "green":
+                    btn.setBackground(Color.green);
+                    break;
+                case "blue":
+                    btn.setBackground(Color.blue);
+                    break;
+            }
+            btn.setForeground(Color.black);
             btn.addActionListener(cl);
+            counter3++;
             player3CardPanel.add(btn);
         }
         for (int i = 0; i < cards4.size(); i++) {
             JButton btn = new JButton(cards4.get(i).getColor() + " " + cards4.get(i).getNumber());
-            String colorStr = cards4.get(i).getColor();
-            Color color = Color.getColor(colorStr);
-            btn.setBackground(color);
+            switch (cards4.get(i).getColor()) {
+                case "red":
+                    btn.setBackground(Color.red);
+                    break;
+                case "yellow":
+                    btn.setBackground(Color.yellow);
+                    break;
+                case "blue":
+                    btn.setBackground(Color.blue);
+                    break;
+                case "green":
+                    btn.setBackground(Color.green);
+                    break;
+            }
+            btn.setForeground(Color.black);
             btn.addActionListener(cl);
+            counter4++;
             player4CardPanel.add(btn);
         }
-
-        pointsPanel.setLayout(new FlowLayout());
-        pointsPanel.add(pointsPlayer1);
-        pointsPanel.add(pointsPlayer2);
-        pointsPanel.add(pointsPlayer3);
-        pointsPanel.add(pointsPlayer4);
-
-        getContentPane().add(pointsPanel, BorderLayout.WEST);
-
         gamePanel.setLayout(new BorderLayout(30, 30));
 
         playerName1.setHorizontalAlignment(JLabel.CENTER);
@@ -131,10 +307,6 @@ public class MainView extends JFrame {
         playerName3.setText(player3.getName());
         playerName4.setText(player4.getName());
 
-        pointsPlayer1.setText(player1.getName() + ": " + player1.getPoints() + " Points");
-        pointsPlayer2.setText(player2.getName() + ": " + player2.getPoints() + " Points");
-        pointsPlayer3.setText(player3.getName() + ": " + player3.getPoints() + " Points");
-        pointsPlayer4.setText(player4.getName() + ": " + player4.getPoints() + " Points");
 
         player1Panel.setLayout(new BoxLayout(player1Panel, BoxLayout.Y_AXIS));
         player2Panel.setLayout(new BoxLayout(player2Panel, BoxLayout.Y_AXIS));
@@ -158,32 +330,7 @@ public class MainView extends JFrame {
 
         mainPanel.add(gamePanel);
         getContentPane().add(mainPanel, BorderLayout.CENTER);
-
         setVisible(true);
-    }
-
-    private void rotatePlayer() {
-        if(playerName1.getForeground().equals(Color.blue)) {
-            playerName1.setForeground(Color.black);
-            playerName2.setForeground(Color.blue);
-
-        }
-        if(playerName2.getForeground().equals(Color.blue)) {
-            playerName2.setForeground(Color.black);
-            playerName3.setForeground(Color.blue);
-
-        }
-        if(playerName3.getForeground().equals(Color.blue)) {
-            playerName3.setForeground(Color.black);
-            playerName4.setForeground(Color.blue);
-
-        }
-        if(playerName4.getForeground().equals(Color.blue)) {
-            playerName4.setForeground(Color.black);
-            playerName1.setForeground(Color.blue);
-
-        }
-
     }
 
     private class ClickListener implements ActionListener {
@@ -196,18 +343,43 @@ public class MainView extends JFrame {
             String part2 = parts[1];
             int number = Integer.parseInt(part2);
 
-            if(game.gameRules(card, new Card(number, part1, 0))) {
-                tableLabel.append(b.getText() + " wurde gesetzt. \n");
+            if (game.gameRules(card, new Card(number, part1, 0))) {
+                gameTxtArea.append(b.getText() + " wurde gesetzt.\n");
                 b.setVisible(false);
                 card = new Card(number, part1, 0);
-                rotatePlayer();
-                //tableLabel.append(player.getName() + " ist an der Reihe. \n");
-
+                if (b.getParent() == player1CardPanel) {
+                    counter1--;
+                } else if (b.getParent() == player2CardPanel) {
+                    counter2--;
+                } else if (b.getParent() == player3CardPanel) {
+                    counter3--;
+                } else if (b.getParent() == player4CardPanel) {
+                    counter4--;
+                }
+                if(counter1 == 0) {
+                    dispose();
+                    String name = player1.getName();
+                    new EndView(player1, player2, player3, player4, stack, name);
+                } else if(counter2 == 0) {
+                    dispose();
+                    String name = player2.getName();
+                    new EndView(player1, player2, player3, player4, stack, name);
+                } else if(counter3 == 0) {
+                    dispose();
+                    String name = player3.getName();
+                    new EndView(player1, player2, player3, player4, stack, name);
+                } else if(counter4 == 0) {
+                    dispose();
+                    String name = player4.getName();
+                    new EndView(player1, player2, player3, player4, stack, name);
+                } else {
+                    gameTxtArea.append("Nächster Spieler ist an der Reihe.\n");
+                }
             } else {
-                tableLabel.append("Diese Karte kann nicht gespielt werden. Wähle eine andere Karte aus. \n");
-                tableLabel.append(card.getColor() + " " + card.getNumber() + " liegt auf dem Stapel. \n");
+                gameTxtArea.append("Diese Karte kann nicht gespielt werden. Wähle eine andere Karte aus.\n");
+                gameTxtArea.append(card.getColor() + " " + card.getNumber() + " liegt auf dem Stapel.\n");
             }
+
         }
     }
-
 }
